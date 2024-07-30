@@ -1,26 +1,19 @@
 package classasertion
 
-import org.assertj.core.api.Assertions.*
-import org.junit.jupiter.api.Test
+import io.kotest.core.spec.style.WordSpec
+import io.kotest.matchers.shouldBe
+import io.kotest.matchers.shouldNotBe
 
-class BetaTest {
-  @Test
-  fun ID1とID2のクラスの場合失敗する() {
-    // execute
-    val actual = Beta(1)
+class BetaTest : WordSpec({
+    "ID1 と ID2 のクラス比較" should {
+        "異なっている" {
+            Beta(1) shouldNotBe Beta(2)
+        }
+    }
 
-    // expected
-    val expected = Beta(2)
-    assertThat(actual).isEqualTo(expected)
-  }
-
-  @Test
-  fun ID1とID1のクラスの場合成功する() {
-    // execute
-    val actual = Beta(1)
-
-    // expected
-    val expected = Beta(1)
-    assertThat(actual).isEqualTo(expected)
-  }
-}
+    "ID1 と ID1 のクラス比較" should {
+        "同じである" {
+            Beta(1) shouldBe Beta(1)
+        }
+    }
+})
