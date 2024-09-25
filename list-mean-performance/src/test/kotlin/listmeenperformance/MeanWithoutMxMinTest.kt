@@ -1,5 +1,7 @@
 package listmeenperformance
 
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.datatest.withData
 import io.kotest.matchers.shouldBe
@@ -24,6 +26,12 @@ class MeanWithoutMxMinTest : WordSpec() {
                 sut.executeWithoutLoop(input) shouldBe expected
             }
 
+            "最大値と最小値が同じ場合は例外が返る" {
+                shouldThrowExactly<IllegalArgumentException> {
+                    sut.executeWithoutLoop(listOf(1, 1, 1, 1))
+                }.message shouldBe "最大値と最小値が同じです。"
+            }
+
             "長いリストの場合の時間計測" {
                 val start = System.currentTimeMillis()
                 println(sut.executeWithoutLoop(List(10000000) { it }))
@@ -40,6 +48,12 @@ class MeanWithoutMxMinTest : WordSpec() {
                 )
             ) { (input, expected) ->
                 sut.executeWithLoop(input) shouldBe expected
+            }
+
+            "最大値と最小値が同じ場合は例外が返る" {
+                shouldThrowExactly<IllegalArgumentException> {
+                    println(sut.executeWithLoop(listOf(1, 1, 1, 1)))
+                }.message shouldBe "最大値と最小値が同じです。"
             }
 
             "長いリストの場合の時間計測" {

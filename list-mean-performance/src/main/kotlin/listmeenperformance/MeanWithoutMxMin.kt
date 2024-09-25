@@ -18,6 +18,8 @@ class MeanWithoutMxMin {
         val max = input.max()
         val min = input.min()
 
+        require(max != min) { "最大値と最小値が同じです。" }
+
         return input.filter { e -> e != min && e != max }.average()
     }
 
@@ -32,12 +34,12 @@ class MeanWithoutMxMin {
         var count = 0
 
         var maxParam = MaxParam(Int.MIN_VALUE, 0)
+        var minParam = MinParam(Int.MAX_VALUE, 0)
 //        var max = Int.MIN_VALUE
 //        var min = Int.MAX_VALUE
-
-        var minParam = MinParam(Int.MAX_VALUE, 0)
 //        var maxCount = 0
 //        var minCount = 0
+
 
         for (num in input) {
             sum += num
@@ -59,6 +61,8 @@ class MeanWithoutMxMin {
 //                minCount++
 //            }
         }
+
+        require(maxParam.max != minParam.min) { "最大値と最小値が同じです。" }
 
         sum -= maxParam.max * maxParam.maxCount
         sum -= minParam.min * minParam.minCount
