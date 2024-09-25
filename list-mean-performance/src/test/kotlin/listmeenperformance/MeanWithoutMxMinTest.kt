@@ -1,6 +1,5 @@
 package listmeenperformance
 
-import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.assertions.throwables.shouldThrowExactly
 import io.kotest.core.spec.style.WordSpec
 import io.kotest.datatest.withData
@@ -26,6 +25,12 @@ class MeanWithoutMxMinTest : WordSpec() {
                 sut.executeWithoutLoop(input) shouldBe expected
             }
 
+            "リストの要素が 2 以下の場合は例外が返る" {
+                shouldThrowExactly<IllegalArgumentException> {
+                    sut.executeWithoutLoop(listOf(1, 2))
+                }.message shouldBe "要素が 3 以上の配列を入力してください。"
+            }
+
             "最大値と最小値が同じ場合は例外が返る" {
                 shouldThrowExactly<IllegalArgumentException> {
                     sut.executeWithoutLoop(listOf(1, 1, 1, 1))
@@ -48,6 +53,12 @@ class MeanWithoutMxMinTest : WordSpec() {
                 )
             ) { (input, expected) ->
                 sut.executeWithLoop(input) shouldBe expected
+            }
+
+            "リストの要素が 2 以下の場合は例外が返る" {
+                shouldThrowExactly<IllegalArgumentException> {
+                    sut.executeWithLoop(listOf(1, 2))
+                }.message shouldBe "要素が 3 以上の配列を入力してください。"
             }
 
             "最大値と最小値が同じ場合は例外が返る" {
