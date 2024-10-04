@@ -3,15 +3,6 @@ import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-val versions by extra {
-    mapOf(
-        "java" to "21",
-        "kotlin" to "1.9.23",
-        "kotest" to "5.9.1",
-        "detekt" to "1.23.6",
-    )
-}
-
 plugins {
     kotlin("jvm")
     id("io.gitlab.arturbosch.detekt")
@@ -27,15 +18,16 @@ repositories {
 }
 
 dependencies {
-    testImplementation("io.kotest:kotest-runner-junit5:${versions["kotest"]}")
-    testImplementation("io.kotest:kotest-assertions-core:${versions["kotest"]}")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:${versions["detekt"]}")
+    implementation("io.arrow-kt:arrow-core:1.2.4")
+    testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
+    testImplementation("io.kotest:kotest-assertions-core:5.9.1")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
 }
 
 tasks.withType<KotlinCompile>() {
     kotlinOptions {
         freeCompilerArgs += "-Xjsr305=strict"
-        jvmTarget = "${versions["java"]}"
+        jvmTarget = "21"
     }
 }
 
