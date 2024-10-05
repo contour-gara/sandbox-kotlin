@@ -19,6 +19,7 @@ repositories {
 
 dependencies {
     implementation("io.arrow-kt:arrow-core:1.2.4")
+    implementation("org.apache.commons:commons-lang3:3.17.0")
     testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
     testImplementation("io.kotest:kotest-assertions-core:5.9.1")
     detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
