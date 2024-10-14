@@ -38,5 +38,13 @@ class MyDateTimeTest : WordSpec({
                 actual shouldBe expected
             }
         }
+
+        "存在しない日付の場合" should {
+            "例外が返る" {
+                val actual = MyDateTime.of("20230229", 1000)
+                val expected = Either.Left(MyDateTimeError.DateError("日付が不正です。"))
+                actual shouldBe expected
+            }
+        }
     }
 })
