@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter
 import java.time.format.DateTimeParseException
 import java.time.format.ResolverStyle
 
+@ConsistentCopyVisibility
 data class MyDateTime private constructor(val dateTime: LocalDateTime) {
     companion object {
         fun of(date: String, time: Int): Either<MyDateTimeError, MyDateTime> {

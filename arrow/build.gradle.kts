@@ -4,8 +4,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm")
-    id("io.gitlab.arturbosch.detekt")
+    kotlin("jvm") version "2.0.20"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
 }
 
 group = "org.contourgara"

@@ -6,15 +6,15 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 val versions by extra {
     mapOf(
         "java" to "21",
-        "kotlin" to "1.9.23",
+        "kotlin" to "2.0.10",
         "kotest" to "5.9.1",
         "detekt" to "1.23.6",
     )
 }
 
 plugins {
-    kotlin("jvm") version "1.9.23"
-    id("io.gitlab.arturbosch.detekt")
+    kotlin("jvm") version "2.0.10"
+    id("io.gitlab.arturbosch.detekt") version "1.23.6"
 }
 
 group = "org.contourgara"
