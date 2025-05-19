@@ -4,8 +4,8 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "2.0.20"
-    id("io.gitlab.arturbosch.detekt") version "1.23.6"
+    kotlin("jvm") version "2.1.21"
+    id("io.gitlab.arturbosch.detekt") version "1.23.8"
 }
 
 group = "org.contourgara"
@@ -18,11 +18,11 @@ repositories {
 }
 
 dependencies {
-    implementation("io.arrow-kt:arrow-core:1.2.4")
+    implementation("io.arrow-kt:arrow-core:2.1.0")
     implementation("org.apache.commons:commons-lang3:3.17.0")
     testImplementation("io.kotest:kotest-runner-junit5:5.9.1")
     testImplementation("io.kotest:kotest-assertions-core:5.9.1")
-    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.6")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.23.8")
 }
 
 tasks.withType<KotlinCompile>() {
